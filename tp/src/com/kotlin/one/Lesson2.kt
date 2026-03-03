@@ -1,119 +1,132 @@
 package com.android.one
 
+// Write a function that greets someone by name.
 fun greet(name: String = "Student"): String {
-    TODO("Write a function that greets someone by name.")
+    return name
 }
 
+// Print user info, with some default values. In the format: $name is $age years old and lives in $city.
 fun printInfo(name: String, age: Int = 18, city: String = "Paris") {
-    TODO("Print user info, with some default values. In the format: $name is $age years old and lives in $city.")
+    println("$name is $age years old and lives in $city.")
 }
 
+// Function that adds two numbers and returns the result.
 fun add(a: Int, b: Int): Int {
-    TODO("Function that adds two numbers and returns the result.")
+    return a + b
 }
 
+// Check if a number is even.
 fun isEven(number: Int): Boolean {
-    TODO("Check if a number is even.")
+    return number % 2 == 0
 }
 
+// Compute area of a circle using π * r².
 fun areaOfCircle(radius: Double): Double {
-    TODO(
-        "Compute area of a circle using π * r²."
-    )
+    return Math.PI * radius * radius
 }
 
-// TODO 5: Return a letter grade based on score.
+// Return a letter grade based on score.
+// - Score >= 90: 'A'
+// - Score >= 80: 'B'
+// - Score >= 70: 'C'
+// - Score >= 60: 'D'
+// - Below 60: 'F'
 fun grade(score: Int): String {
-    TODO(
-        "Return a letter grade based on score. \uD83D\uDD27 Use if or when" +
-                "- Score >= 90: 'A'\n" +
-                "- Score >= 80: 'B'\n" +
-                "- Score >= 70: 'C'\n" +
-                "- Score >= 60: 'D'\n" +
-                "- Below 60: 'F'"
-    )
+    return when {
+        score >= 90 -> "A"
+        score >= 80 -> "B"
+        score >= 70 -> "C"
+        score >= 60 -> "D"
+        else -> "F"
+    }
 }
 
+// Return the maximum of three numbers.
 fun maxOfThree(a: Int, b: Int, c: Int): Int {
-    TODO(
-        "Return the maximum of three numbers."
-    )
+    return maxOf(a, b, c)
 }
 
+// Convert Celsius to Fahrenheit.
 fun toFahrenheit(celsius: Double): Double {
-    TODO("Convert Celsius to Fahrenheit.")
+    return celsius * 9.0 / 5.0 + 32.0
 }
 
-
+// Apply a discount (default 10%) to a price.
 fun applyDiscount(price: Double, discount: Double = 0.1): Double {
-    TODO(
-        "Apply a discount (default 10%) to a price."
-    )
+    return price * (1 - discount)
 }
 
-
+// Capitalize the first letter of each word in a sentence.
 fun capitalizeWords(sentence: String): String {
-    TODO(
-        "Capitalize the first letter of each word in a sentence."
-    )
+    return sentence.split(" ").joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
 }
 
+// Compute BMI using the formula: weight / height²
 fun bmi(weight: Double, height: Double): Double {
-    TODO(
-        "Compute BMI using the formula: weight / height²"
-    )
+    return weight / (height * height)
 }
 
+// Check password strength:
+// - At least 8 characters
+// - Contains uppercase letter
+// - Contains lowercase letter
+// - Contains a number
 fun passwordStrength(password: String): Boolean {
-    TODO(
-        "Check password strength:\n" +
-                "- At least 8 characters\n" +
-                "- Contains uppercase letter\n" +
-                "- Contains lowercase letter\n" +
-                "- Contains a number"
-    )
+    return password.length >= 8 &&
+            password.any { it.isUpperCase() } &&
+            password.any { it.isLowerCase() } &&
+            password.any { it.isDigit() }
 }
 
+// Return a list of even numbers from the input list.
 fun filterEvenNumbers(numbers: List<Int>): List<Int> {
-    TODO(
-        "Return a list of even numbers from the input list."
-    )
+    return numbers.filter { it % 2 == 0 }
 }
 
-
+// Compute the factorial of a number n recursively.
 fun factorial(n: Int): Int {
-    TODO(
-        "Compute the factorial of a number n recursively."
-    )
+    return if (n <= 1) 1 else n * factorial(n - 1)
 }
 
+// Return the nth Fibonacci number using recursion.
 fun fibonacci(n: Int): Int {
-    TODO(
-        "Return the nth Fibonacci number using recursion."
-    )
+    return if (n <= 1) n else fibonacci(n - 1) + fibonacci(n - 2)
 }
 
-
-// TODO 19: Simple calculator using when expression.
+// Simple calculator using when expression.
+// Takes two numbers and an operator (+, -, *, /) from the user and prints the result.
 fun miniCalculator() {
-    TODO(
-        "Create a simple calculator that takes two numbers and an operator (+, -, *, /) from the user and prints the result."
-    )
-    /*
-    Example
     println("Enter first number:")
     val a = readln().toDouble()
-     */
+    println("Enter operator (+, -, *, /):")
+    val op = readln()
+    println("Enter second number:")
+    val b = readln().toDouble()
+    val result = when (op) {
+        "+" -> a + b
+        "-" -> a - b
+        "*" -> a * b
+        "/" -> a / b
+        else -> {
+            println("Unknown operator")
+            return
+        }
+    }
+    println("Result: $result")
 }
 
-// TODO 20: Text analyzer.
+// Text analyzer: Analyze the text and return statistics:
+// - Character count
+// - Word count
+// - Longest word
+// - Average word length
 fun analyzeText(text: String): Map<String, Any> {
-    TODO(
-        "Analyze the text and return statistics:\n" +
-                "- Character count\n" +
-                "- Word count\n" +
-                "- Longest word\n" +
-                "- Average word length"
+    val words = text.split(" ")
+    return mapOf(
+        "charCount" to text.length,
+        "wordCount" to words.size,
+        "longestWord" to words.maxBy { it.length },
+        "averageWordLength" to words.map { it.length }.average()
     )
 }
 
@@ -189,5 +202,3 @@ fun main() {
 
 // Simple helper for double comparison
 private val Double.absoluteValue get() = if (this < 0) -this else this
-
-
